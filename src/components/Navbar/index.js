@@ -7,13 +7,17 @@ import {
   NavbarWrapper,
 } from "./NavbarElements";
 import Logo from "../../images/logo.svg";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
-const Navbar = ({ isSlideShowOn, startSlideShow, stopSlideShow }) => {
+const Navbar = () => {
+  const { startSlideShow, stopSlideShow, isSlideShowOn } =
+    useContext(AppContext);
 
   const renderBtn = () => {
     if (isSlideShowOn) {
       return (
-        <NabarSlideShowBtn onClick={() => stopSlideShow()}>
+        <NabarSlideShowBtn onClick={stopSlideShow}>
           stop slideshow
         </NabarSlideShowBtn>
       );
