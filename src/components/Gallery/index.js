@@ -1,33 +1,30 @@
-import { React } from "react";
+import React, { useContext } from "react";
 import { ContainerEl } from "../Container/ContainerEl";
 import GalleryItem from "../GalleryItem";
-import { ImageEl } from "../Image/ImageEl";
+import Slider from "../Slider";
 import { GalleryWrapper } from "./GalleryElements";
+import { AppContext } from "../../context/AppContext";
 
-const Gallery = ({ data, startSlideShow, isSlideShowOn, currentSlide }) => {
+const Gallery = () => {
+  const { startSlideShow, isSlideShowOn, data } = useContext(AppContext);
+
   return (
     <>
       {data.length === 0 ? null : (
-        <>
-          <GalleryWrapper>
-            <ContainerEl>
-              <div className="macy-container">
-                {data.map((item, i) => {
-                  return (
-                    <div key={i} onClick={() => startSlideShow(i)}>
-                      <GalleryItem item={item} />
-                    </div>
-                  );
-                })}
-              </div>
-              {isSlideShowOn && (
-                <div>
-                  <ImageEl src={data[currentSlide].images.hero.large} />
-                </div>
-              )}
-            </ContainerEl>
-          </GalleryWrapper>
-        </>
+        <GalleryWrapper isSlideShowOn={isSlideShowOn}>
+          <ContainerEl>
+            <div className="macy-container">
+              {data.map((item, i) => {
+                return (
+                  <div key={i} onClick={() => startSlideShow(i)}>
+                    <GalleryItem item={item} isSlideShowOn />
+                  </div>
+                );
+              })}
+            </div>
+          </ContainerEl>
+          {isSlideShowOn && <Slider />}
+        </GalleryWrapper>
       )}
     </>
   );

@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import { ImageEl } from "../Image/ImageEl";
 
-export const GalleryWrapper = styled.main`
-  margin-top: 17rem;
-`;
-
 export const GalleryFigure = styled.figure`
+  transition: var(--transition) opacity;
+
   &:hover {
     cursor: pointer;
+    opacity: .8;
   }
 `;
 
