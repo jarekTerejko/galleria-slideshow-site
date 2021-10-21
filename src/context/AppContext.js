@@ -6,9 +6,8 @@ export const AppContext = createContext();
 
 const AppContextProvider = (props) => {
   const { data, isLoading } = useFetch("../data.json");
-
   const [isSlideShowOn, setIsSlideShowOn] = useState(false);
-  const [currentSlide, setCurrentSlide] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const startSlideShow = (index) => {
     setIsSlideShowOn(true);
@@ -17,7 +16,14 @@ const AppContextProvider = (props) => {
 
   const stopSlideShow = () => {
     setIsSlideShowOn(false);
-    setCurrentSlide(null);
+    setCurrentSlide(0);
+  };
+
+  const nextSlide = () => {
+    setCurrentSlide(currentSlide + 1);
+  };
+  const prevSlide = () => {
+    setCurrentSlide(currentSlide - 1);
   };
 
   useEffect(() => {
@@ -50,6 +56,9 @@ const AppContextProvider = (props) => {
         isLoading,
         startSlideShow,
         stopSlideShow,
+        nextSlide,
+        prevSlide,
+        setCurrentSlide,
         data,
         currentSlide,
       }}
