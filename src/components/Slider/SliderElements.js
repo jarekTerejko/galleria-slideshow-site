@@ -88,6 +88,15 @@ export const SliderFooter = styled.footer`
   }
 `;
 
+export const SLiderFooterProgressBar = styled(motion.div)`
+  background: var(--color-black);
+  height: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+`;
+
 export const SliderPaintingOverview = styled.p`
   color: var(--color-grey-1);
   font-size: 1.4rem;

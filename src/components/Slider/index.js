@@ -19,6 +19,7 @@ import {
   SliderFooterColLeft,
   SliderFooterColRight,
   SliderBtn,
+  SLiderFooterProgressBar,
 } from "./SliderElements";
 import IconBackBtn from "../../images/icon-back-button.svg";
 import IconNextBtn from "../../images/icon-next-button.svg";
@@ -71,7 +72,22 @@ const Slider = () => {
                   </SliderInnnerWrapper>
                 </AnimatePresence>
               </ContainerEl>
-              <SliderFooter>
+              <SliderFooter currentSlide={currentSlide}>
+                {/* <SLiderProgressBar 
+                  style={{width: `calc((100% / 15) * (${currentSlide + 1}))`}}
+                /> */}
+                <AnimatePresence>
+                  <SLiderFooterProgressBar
+                    style={{
+                      width: `calc((100% / 15) * (${currentSlide + 1}))`,
+                    }}
+                    key={currentSlide}
+                    initial={{ x: 0, opacity: 0 }}
+                    animate={{ x: 0, opacity: 1 }}
+                    exit={{ x: 0, opacity: 0 }}
+                  />
+                </AnimatePresence>
+
                 <ContainerEl>
                   <SliderFooterInnerWrapper>
                     <AnimatePresence exitBeforeEnter>
