@@ -20,14 +20,28 @@ import {
   SliderFooterColRight,
   SliderBtn,
   SLiderFooterProgressBar,
+  SliderModalOverlay,
+  SliderModalImg,
+  SliderModalWrapper,
+  SliderModalImgWrapper,
 } from "./SliderElements";
 import IconBackBtn from "../../images/icon-back-button.svg";
 import IconNextBtn from "../../images/icon-next-button.svg";
 import { AppContext } from "../../context/AppContext";
 import { WikipediaLinkEl } from "../WikipediaLink/WikipediaLinkEl";
+import { ModalBtnEl } from "../ModalBtn/ModalBtnEl";
+import IconViewImage from "../../images/icon-view-image.svg";
 
 const Slider = () => {
-  const { currentSlide, data, nextSlide, prevSlide } = useContext(AppContext);
+  const {
+    currentSlide,
+    data,
+    nextSlide,
+    prevSlide,
+    isModal,
+    showModal,
+    closeModal,
+  } = useContext(AppContext);
 
   return (
     <SliderWrapper>
@@ -36,20 +50,44 @@ const Slider = () => {
         .map((slideItem, i) => {
           return (
             <div key={i}>
+              {isModal && (
+                <AnimatePresence>
+                  <SliderModalOverlay
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                  >
+                    <SliderModalWrapper>
+                      <SliderModalImgWrapper>
+                        {/* <SliderModalImg src={slideItem.images.gallery} /> */}
+                        <ImageEl
+                          src={slideItem.images.gallery}
+                          alt={`${slideItem.name} - ${slideItem.artist.name}`}
+                        />
+                        <ModalBtnEl closeBtn onClick={closeModal}>
+                          Close
+                        </ModalBtnEl>
+                      </SliderModalImgWrapper>
+                    </SliderModalWrapper>
+                  </SliderModalOverlay>
+                </AnimatePresence>
+              )}
               <ContainerEl>
                 <AnimatePresence exitBeforeEnter>
                   <SliderInnnerWrapper
                     key={currentSlide}
-                    initial={{ x: 0, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: 0, opacity: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                   >
                     <SliderColLeft>
-                      {/* <ImageEl src={slideItem.images.hero.large} /> */}
-                      <SliderImageLarge
-                        key={currentSlide}
-                        src={slideItem.images.hero.large}
-                      />
+                      <SliderImageLarge src={slideItem.images.hero.large} />
+                      <ModalBtnEl onClick={showModal}>
+                        <ImageEl
+                          src={IconViewImage}
+                          style={{ marginRight: "20px" }}
+                        />
+                        View Image
+                      </ModalBtnEl>
                       <SliderBasicInfoContainer>
                         <SliderPaintingTitle>
                           {slideItem.name}
@@ -73,18 +111,15 @@ const Slider = () => {
                 </AnimatePresence>
               </ContainerEl>
               <SliderFooter currentSlide={currentSlide}>
-                {/* <SLiderProgressBar 
-                  style={{width: `calc((100% / 15) * (${currentSlide + 1}))`}}
-                /> */}
                 <AnimatePresence>
                   <SLiderFooterProgressBar
                     style={{
                       width: `calc((100% / 15) * (${currentSlide + 1}))`,
                     }}
                     key={currentSlide}
-                    initial={{ x: 0, opacity: 0 }}
-                    animate={{ x: 0, opacity: 1 }}
-                    exit={{ x: 0, opacity: 0 }}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
                   />
                 </AnimatePresence>
 
@@ -93,9 +128,9 @@ const Slider = () => {
                     <AnimatePresence exitBeforeEnter>
                       <SliderFooterColLeft
                         key={currentSlide}
-                        initial={{ x: 0, opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: 0, opacity: 0 }}
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                       >
                         <SliderPaintingTitle footerPaintingTitle>
                           {slideItem.name}

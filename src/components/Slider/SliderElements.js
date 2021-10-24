@@ -10,6 +10,7 @@ export const SliderWrapper = styled(motion.section)`
   width: 100%;
   min-height: 100%;
   min-height: 93.4rem;
+  min-height: 89.4rem;
   background: var(--color-white);
   padding-top: 6rem;
   z-index: 2;
@@ -141,4 +142,31 @@ export const SliderBtn = styled(motion.button)`
     opacity: 0.5;
     pointer-events: none;
   }
+`;
+
+export const SliderModalOverlay = styled(motion.div)`
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.95);
+  z-index: 2;
+  padding: 3rem 2rem;
+  padding-top: 18rem;
+  padding-bottom: 10rem;
+  overflow-y: scroll;
+`;
+
+export const SliderModalWrapper = styled(motion.div)`
+  position: relative;
+  max-width: 144rem;
+  margin: 0rem auto;
+  display: flex;
+  justify-content: center;
+`;
+
+export const SliderModalImgWrapper = styled.div`
+  position: relative;
 `;

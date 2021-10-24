@@ -8,6 +8,7 @@ const AppContextProvider = (props) => {
   const { data, isLoading } = useFetch("../data.json");
   const [isSlideShowOn, setIsSlideShowOn] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [isModal, setIsModal] = useState(false);
 
   const startSlideShow = (index) => {
     setIsSlideShowOn(true);
@@ -24,6 +25,14 @@ const AppContextProvider = (props) => {
   };
   const prevSlide = () => {
     setCurrentSlide(currentSlide - 1);
+  };
+  const showModal = () => {
+    setIsModal(true);
+    document.body.style.overflow = "hidden";
+  };
+  const closeModal = () => {
+    setIsModal(false);
+    document.body.style.overflow = "initial";
   };
 
   useEffect(() => {
@@ -61,6 +70,9 @@ const AppContextProvider = (props) => {
         setCurrentSlide,
         data,
         currentSlide,
+        isModal,
+        showModal,
+        closeModal,
       }}
     >
       {props.children}
