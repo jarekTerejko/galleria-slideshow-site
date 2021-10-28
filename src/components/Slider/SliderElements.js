@@ -15,8 +15,11 @@ export const SliderWrapper = styled(motion.section)`
   padding-top: 6rem;
   z-index: 2;
 
-  @media screen and (max-width: 375px) {
-    min-height: 120rem;
+  @media screen and (max-width: 1030px) {
+    min-height: 141rem;
+  }
+  @media screen and (max-width: 500px) {
+    min-height: 121rem;
   }
 `;
 
