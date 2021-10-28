@@ -43,6 +43,11 @@ export const NabarSlideShowBtn = styled.button`
   color: var(--color-grey-1);
   transition: color var(--transition);
 
+  @media screen and (max-width: 500px) {
+    font-size: 1rem;
+    padding-left: 1rem;
+  }
+
   &:hover {
     color: var(--color-black);
   }
@@ -50,4 +55,8 @@ export const NabarSlideShowBtn = styled.button`
 
 export const NavbarLink = styled.a`
   text-decoration: none;
+
+  @media screen and (max-width: 500px) {
+    max-width: 12rem;
+  }
 `;

@@ -13,6 +13,7 @@ const AppContextProvider = (props) => {
   const startSlideShow = (index) => {
     setIsSlideShowOn(true);
     setCurrentSlide(index);
+    window.scrollTo(0, 0);
   };
 
   const stopSlideShow = () => {
@@ -43,12 +44,11 @@ const AppContextProvider = (props) => {
         mobileFirst: true,
         waitForImages: true,
         margin: 40,
-        // columns: 1,
+        columns: 1,
         breakAt: {
           1200: 4,
-          940: 3,
-          720: 2,
-          375: 1,
+          860: 3,
+          540: 2,
         },
       });
     }

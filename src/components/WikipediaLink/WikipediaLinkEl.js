@@ -11,4 +11,8 @@ export const WikipediaLinkEl = styled.a`
   &:hover {
     color: var(--color-black);
   }
+
+  @media screen and (max-width: 1030px) {
+    margin-right: auto;
+  }
 `;

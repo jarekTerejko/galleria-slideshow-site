@@ -16,4 +16,9 @@ export const ModalBtnEl = styled.button`
   border: none;
   background: ${(props) => (props.closeBtn ? "none" : "rgba(0, 0, 0, 0.95)")};
   cursor: pointer;
+
+  @media screen and (max-width: 500px) {
+    top: ${(props) => (props.closeBtn ? "" : "20px")};
+    bottom: unset;
+  }
 `;

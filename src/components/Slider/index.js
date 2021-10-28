@@ -9,6 +9,7 @@ import {
   SliderFooter,
   SliderFooterInnerWrapper,
   SliderImageLarge,
+  SliderImageSmall,
   SliderInnnerWrapper,
   SliderPaintingTitle,
   SliderPaintingAuthor,
@@ -21,7 +22,6 @@ import {
   SliderBtn,
   SLiderFooterProgressBar,
   SliderModalOverlay,
-  SliderModalImg,
   SliderModalWrapper,
   SliderModalImgWrapper,
 } from "./SliderElements";
@@ -81,6 +81,7 @@ const Slider = () => {
                   >
                     <SliderColLeft>
                       <SliderImageLarge src={slideItem.images.hero.large} />
+                      <SliderImageSmall src={slideItem.images.hero.small} />
                       <ModalBtnEl onClick={showModal}>
                         <ImageEl
                           src={IconViewImage}
